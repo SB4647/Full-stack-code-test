@@ -23,7 +23,7 @@ The main components of application page are:
 
 ### Repo Root Directory
 
-./file-upload-application
+[https://github.com/SB4647/Full-stack-code-test/tree/master/file-upload-application](./file-upload-application)
 
 ### Run command
 
@@ -49,9 +49,9 @@ The backend API will:
 
 ### Repo Root Directory
 
-./file-upload-api
+[https://github.com/SB4647/Full-stack-code-test/tree/master/file-upload-api](./file-upload-api)
 
 ### Run command
 
-Run the command 'node app.js' from the file-upload-api root directory in terminal. The application should then run on http://localhost:3000 in the web browser.
+Run the command 'node app.js' from the file-upload-api root directory in terminal. The application should then start running and show the message "App running on port 8000" in the terminal.
 
