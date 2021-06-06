@@ -27,7 +27,7 @@ The main components of application page are:
 
 ### Run command
 
-Run the command 'npm start' from the file-upload-application root directory in terminal. The application should then run on http://localhost:3000 in the web browser.
+Run the command 'npm start' from the file-upload-application root directory in terminal. The application should then run on [http://localhost:3000](http://localhost:3000) in the web browser.
 
 ## Back-end API 
 
