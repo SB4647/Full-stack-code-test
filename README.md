@@ -23,7 +23,7 @@ The main components of application page are:
 
 ### Repo Root Directory
 
-[https://github.com/SB4647/Full-stack-code-test/tree/master/file-upload-application](./file-upload-application)
+[./file-upload-application](https://github.com/SB4647/Full-stack-code-test/tree/master/file-upload-application)
 
 ### Run command
 
@@ -49,7 +49,7 @@ The backend API will:
 
 ### Repo Root Directory
 
-[https://github.com/SB4647/Full-stack-code-test/tree/master/file-upload-api](./file-upload-api)
+[./file-upload-api](https://github.com/SB4647/Full-stack-code-test/tree/master/file-upload-api)
 
 ### Run command
 
