@@ -8,7 +8,7 @@ This application demonstrates how a single page front-end application can send c
 
 For this project to work correctly, make sure that both the single page application and the back-end API application is running concurrently. This will require running the application start commands on two different terminals which have npm installed.
 
-The file that needs to be uploaded using the single page application is "100 Sales Records".csv which is located in the files [./file-upload-application/files](./file-upload-application/files) directory. From this file, the back-end API is designed to calculate the Total Units Sold for each region and send it back to the single page application.
+The file that needs to be uploaded using the single page application is "100 Sales Records".csv which is located in the [./file-upload-application/files](./file-upload-application/files) directory. From this file, the back-end API is designed to calculate the Total Units Sold for each region and send it back to the single page application.
 
 ## Single Page Application
 
