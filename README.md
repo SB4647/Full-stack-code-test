@@ -37,8 +37,6 @@ Application was developed using Node.js runtime and Express.js framework.
 
 The basic flow of application involves:
 
-A user will be able to select a csv file (provided in the attachment), and submit it to the backend API.
-The backend API will:
 1. Listening to port 8000 for a request (containing the file data) from the single page application.
 2. When a request is received, the csv file is saved into the file-upload-api/public folder.
 3. The csv file data is then converted into a JSON array.
