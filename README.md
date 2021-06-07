@@ -8,7 +8,7 @@ This application demonstrates how a single page front-end application can send c
 
 For this project to work correctly, make sure that the single page application and back-end API application are running concurrently. This will require running the application start commands on two different terminals which have npm installed.
 
-The file that needs to be uploaded using the single page application is "100 Sales Records".csv which is located in the [./file-upload-application/files](./file-upload-application/files) directory. From this file, the back-end API is designed to calculate the Total Units Sold for each region and send it back to the single page application.
+The file that needs to be uploaded using the single page application is "100 Sales Records".csv which is located in the [file-upload-application/files](file-upload-application/files) directory. From this file, the back-end API is designed to calculate the Total Units Sold for each region and send it back to the single page application.
 
 ## Single Page Application
 
@@ -19,15 +19,15 @@ Application was developed using React library.
 The main components of application page are:
 - A file input for the user to upload the csv file.
 - A button which submits the uploaded file to the back-end API application.
-- A column chart which displays the Total Units Sold per Region data (only displayed once data received from the bac-end API). 
+- A column chart which displays the Total Units Sold per Region data (only displayed once data received from the back-end API). 
 
 ### Repo Root Directory
 
-[./file-upload-application](https://github.com/SB4647/Full-stack-code-test/tree/master/file-upload-application)
+[file-upload-application](https://github.com/SB4647/Full-stack-code-test/tree/master/file-upload-application)
 
 ### Run command
 
-Run the command 'npm start' from the file-upload-application root directory in terminal. The application should then run on [http://localhost:3000](http://localhost:3000) in the web browser.
+Run the command 'npm start' from the [file-upload-application](./file-upload-application) root directory in terminal. The application should then run on [http://localhost:3000](http://localhost:3000) in the web browser.
 
 ## Back-end API 
 
@@ -47,9 +47,9 @@ The basic flow of application involves:
 
 ### Repo Root Directory
 
-[./file-upload-api](https://github.com/SB4647/Full-stack-code-test/tree/master/file-upload-api)
+[file-upload-api](https://github.com/SB4647/Full-stack-code-test/tree/master/file-upload-api)
 
 ### Run command
 
-Run the command 'node app.js' from the file-upload-api root directory in terminal. The application should then start running and show the message "App running on port 8000" in the terminal.
+Run the command 'node app.js' from the [file-upload-api](./file-upload-api) root directory in terminal. The application should then start running and show the message "App running on port 8000" in the terminal.
 
