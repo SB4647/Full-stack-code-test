@@ -4,6 +4,7 @@ const multer = require("multer");
 const CSVtoJSON = require("csvtojson");
 const app = express();
 app.use(cors());
+const { getRegionUnitsSold, removeArrRegion } = require("./utils/methods");
 
 //Create a multer instance which specifies the save location and name of the csv file received.
 const storage = multer.diskStorage({
@@ -35,48 +36,14 @@ app.post("/upload", (req, res) => {
 
         //read saved csv file and store in JSON array
         const jsonArray = await CSVtoJSON().fromFile(`./public/${fileName}`);
-        //remove all Europe region sale records
-        const filteredArray = await jsonArray.filter(
-            (obj) => obj.Region !== "Europe"
-        );
+        //remove all Europe region sale records using the removeArrRegion method implemented in methods.js
+        const filteredArray = removeArrRegion(await jsonArray, "Europe");
 
-        //sort the data alphabetically by region
-        filteredArray.sort((obj1, obj2) => {
-            return obj1.Region.localeCompare(obj2.Region);
-        });
-
-        //function which iterates through alphabetically sorted array and sums the total units sold for each region.
-        //continously compares the region name of a current and before item to determine end-points for units sold summing
-        const summarySoldUnitsArr = filteredArray.reduce(
-            (acc, arr) => {
-                //check if region names are different.
-                if (acc[acc.length - 1].Region !== arr.Region) {
-                    //reduce current object properties to Region and "Units Sold"
-                    arr = {
-                        Region: arr.Region,
-                        "Units Sold": arr["Units Sold"],
-                    };
-
-                    //push the current object data onto the accumulator array and return the result
-                    acc.push(arr);
-                    return acc;
-                }
-
-                //accumulate units sold sum for region
-                acc[acc.length - 1]["Units Sold"] =
-                    parseInt(acc[acc.length - 1]["Units Sold"]) +
-                    parseInt(arr["Units Sold"]);
-
-                return acc;
-            },
-            [{ Region: "", "Units Sold": 0 }]
-        );
-
-        //remove the inital accumlator value at beginning of array
-        summarySoldUnitsArr.shift();
+        //get the total units sold for each region using the getRegionUnitsSold method implemented in methods.js
+        const resultsArr = getRegionUnitsSold(await filteredArray);
 
         //send  200 ok status and the requested data back to client
-        res.status(200).send(summarySoldUnitsArr);
+        res.status(200).send(resultsArr);
     });
 });
 

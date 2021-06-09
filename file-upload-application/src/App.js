@@ -7,7 +7,31 @@ import Chart from "react-google-charts";
 function App() {
     //set states for the uploaded file data and the calculated results from back-end.
     const [file, setFile] = useState(null);
-    const [fileResults, setFileResults] = useState(null);
+    const [fileResults, setFileResults] = useState([]);
+
+    //chart settings used for google charts
+    const chartSettings = {
+        width: 400,
+        height: 300,
+        options: {
+            legend: { position: "none" },
+            hAxis: {
+                title: "Region",
+                minValue: 0,
+                slantedText: "true",
+            },
+            vAxis: {
+                title: "Total Units Sold",
+            },
+            chartArea: {
+                top: 20,
+                height: "70%",
+            },
+        },
+        data: [["Region", "Units Sold"]].concat(
+            fileResults.map((result) => [result.Region, result["Units Sold"]])
+        ),
+    };
 
     //function which triggers when a file is uploaded to form input. Sets state to the file data.
     const handleOnChange = (event) => {
@@ -26,7 +50,7 @@ function App() {
         //send csv file to server and wait for response
         const response = await axios.post("http://localhost:8000/upload", data);
 
-        //get the calulcated results data from response
+        //get the calculated results data from response
         const results = await response.data;
 
         //set fileResults state to the results data and reset file state
@@ -64,36 +88,17 @@ function App() {
                     </Form>
                 </div>
                 {/* Column graph showing results data. Only displayed when results return from server */}
-                {fileResults ? (
+                {fileResults.length != 0 ? (
                     <div className="text-center">
                         <h4>Total Units Sold for Different Regions</h4>
                         <div className="text-center -flex flex-column align-items-center pl-5 m-0">
                             <Chart
                                 chartType="ColumnChart"
-                                width={400}
-                                height={300}
+                                width={chartSettings.width}
+                                height={chartSettings.height}
                                 loader={<div>Loading Chart</div>}
-                                data={[["Region", "Units Sold"]].concat(
-                                    fileResults.map((result) => [
-                                        result.Region,
-                                        result["Units Sold"],
-                                    ])
-                                )}
-                                options={{
-                                    legend: { position: "none" },
-                                    hAxis: {
-                                        title: "Region",
-                                        minValue: 0,
-                                        slantedText: "true",
-                                    },
-                                    vAxis: {
-                                        title: "Total Units Sold",
-                                    },
-                                    chartArea: {
-                                        top: 20,
-                                        height: "70%",
-                                    },
-                                }}
+                                data={chartSettings.data}
+                                options={chartSettings.options}
                             />
                         </div>
                     </div>
